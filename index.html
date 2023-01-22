@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TripBoss</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- font awesome cdn -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- fonts -->
+        <link rel = "stylesheet" href = "font/fonts.css">
+        <!-- normalize css -->
+        <link rel = "stylesheet" href = "css/normalize.css">
+        <!-- custom css -->
+        <link rel = "stylesheet" href = "css/utility.css">
+        <link rel = "stylesheet" href = "css/style.css">
+        <link rel = "stylesheet" href = "css/responsive.css">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    
+    <body>
+        <nav class = "navbar">
+            <div class = "container flex">
+                <a href = "index.html" class = "site-brand">
+                    Trip<span>Boss</span>
+                </a>
+
+                <button type = "button" id = "navbar-show-btn" class = "flex">
+                    <i class = "fas fa-bars"></i>
+                </button>
+                <div id = "navbar-collapse">
+                    <button type = "button" id = "navbar-close-btn" class = "flex">
+                        <i class = "fas fa-times"></i>
+                    </button>
+                    <ul class = "navbar-nav">
+                        <li class = "nav-item">
+                            <a href = "index.html" class = "nav-link">Home</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a href = "gallery.html" class = "nav-link">Services</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a href = "blog.html" class = "nav-link">Where to go</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a href = "about.html" class = "nav-link">About</a>
+                        </li>
+                        <li class = "nav-item">
+                            <a href = "contact.html" class = "nav-link">Contact</a>
+                        </li>
+                        <li class = "nav-item" id="intro1">
+                            <a href = "signup.html" class = "nav-link">Register</a>
+                        </li>
+                        <li class = "nav-item intro-tag" id="intro2">
+                            <a href = "profile.html" class = "nav-link" id="introuser">Hello user!</a>
+                        </li> 
+                        <li class = "nav-item intro-tag" id="intro3">
+                            <a href = "index.html"  class="nav-link" id="logout" onclick="logout()">Logout</a>
+                        </li>
+
+                    </ul>
+                    
+                </div>
+            </div>
+        </nav>
+        <!-- end of navbar  -->
+
+        <!-- header -->
+        <header class = "flex">
+            <div class = "container">
+                <div class = "header-title">
+                    <h1>Welcome to TripBoss</h1>
+                    <p>Come with us and visit new places in the world....</p>
+                    <a href="https://youtu.be/IgAnj6r1O48" target="_blank" id="watchmore">Watchmore</a>
+                    
+                </div>
+            </div>
+        </header>
+        <!-- header -->
+
+        <script>
+            window.onload=function(){
+                if(window.localStorage.getItem("k")!=null && window.localStorage.getItem("k")!=1){
+                    document.getElementById("intro1").className="nav-item intro-tag";
+                    document.getElementById("intro2").className="nav-item";
+                    document.getElementById("intro3").className="nav-item";
+                    var ans=JSON.parse(window.localStorage.getItem("k"));
+                    document.getElementById("introuser").innerHTML="Hello "+ans.fname+"!";
+                }
+            }
+        </script>
+
+        <script>
+            // play/pause video
+            let video = document.querySelector('.video-wrapper video');
+            document.getElementById('play-btn').addEventListener('click', () => {
+                if(video.paused){
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            });
+            function logout(){
+                window.localStorage.setItem("k",1);
+                document.getElementById("intro1").className="nav-item";
+                document.getElementById("intro2").className="nav-item intro-tag";
+                document.getElementById("intro3").className="nav-item intro-tag";
+            }
+        </script>
+        <script src = "js/script.js"></script>
+        <script src = "js/index.js">
+        </script>
+        
+
+    </body>
+</html>
